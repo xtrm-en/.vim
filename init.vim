@@ -14,7 +14,7 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
 " Themes
-"Plug 'joshdick/onedark.vim'
+Plug 'joshdick/onedark.vim'
 Plug 'everblush/everblush.vim'
 
 " UI
@@ -27,6 +27,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdcommenter'
 
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'voldikss/vim-floaterm'
 
 " Code
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -38,6 +39,9 @@ Plug 'vbe0201/vimdiscord'
 Plug 'wakatime/vim-wakatime'
 
 call plug#end()
+
+"" Floaterm configuration
+nmap <C-t> :FloatermToggle<CR>
 
 "" COC configuration
 let g:coc_global_extensions = [
@@ -106,6 +110,8 @@ nmap <leader>f  <Plug>(coc-format-selected)
 
 "" NERDTree configuration
 
+" Let cwd follow
+let g:NERDTreeChDirMode=2
 let g:NERDTreeIgnore = ['^node_modules$']
 
 nmap <C-n> :NERDTreeToggle<CR>
@@ -174,9 +180,6 @@ set expandtab
 " Mouse support
 set mouse=a
 
-" Map F8 to Tagbar
-nmap <F8> :TagbarToggle<CR>
-
 " disable backup files
 set nobackup
 set nowritebackup
@@ -190,5 +193,3 @@ set signcolumn=no
 
 " Give more space for displaying messages.
 set cmdheight=2
-
-
