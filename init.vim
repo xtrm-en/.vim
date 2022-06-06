@@ -41,6 +41,7 @@ Plug 'wakatime/vim-wakatime'
 call plug#end()
 
 "" Floaterm configuration
+let g:floaterm_wintype='split'
 nmap <C-t> :FloatermToggle<CR>
 
 "" COC configuration
