@@ -29,13 +29,19 @@ Plug 'scrooloose/nerdcommenter'
 
 Plug 'vim-syntastic/syntastic'
 
+Plug 'alexandregv/norminette-vim'
+Plug 'pbondoer/vim-42header'
+Plug 'dawnbeen/c_formatter_42'
+
+Plug 'github/copilot.vim'
+
 " Plug 'christoomey/vim-tmux-navigator'
 Plug 'voldikss/vim-floaterm'
 
 call plug#end()
 
 "" Floaterm configuration
-let g:floaterm_wintype='split'
+let g:floaterm_wintype='vsplit'
 nmap <C-t> :FloatermToggle<CR>
 
 "" NERDTree configuration
@@ -57,9 +63,6 @@ endif
 
 ""
 
-" Enable gcc
-let g:syntastic_c_checkers = ['gcc']
-
 let g:syntastic_python_checkers = ['pyflakes', 'pycodestyle', 'mypy']
 function Py2()
   let g:syntastic_python_python_exec = '/usr/bin/python'
@@ -69,12 +72,14 @@ function Py3()
 endfunction
 call Py3()   " default to Python3
 
+" Enable norminette-vim (and gcc)
+let g:syntastic_c_checkers = ['norminette', 'gcc']
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_c_gcc_args = '-Werror -Wextra -Wall'
 
 " Support headers (.h)
-let g:c_syntax_for_h = 1
 let g:syntastic_c_include_dirs = ['include', '../include', '../../include', 'libft', '../libft/include', '../../libft/include']
+let g:c_syntax_for_h = 1
 
 " Check errors when opening a file (disable to speed up startup time)
 let g:syntastic_check_on_open = 1
@@ -100,7 +105,7 @@ syntax on
 set hidden
 
 " Position in code
-set number
+set number relativenumber
 
 " Don't make noise
 set visualbell
